@@ -406,7 +406,7 @@ _unicar_completar_directorios() {
 
         nombre="${dir##*/}"
 
-        if [[ -z "$cur" || "$nombre" == *"$cur"* ]]; then
+        if [[ -z "$cur" || "${nombre,,}" == *"${cur,,}"* ]]; then
 
             COMPREPLY+=("$nombre")
 
@@ -561,7 +561,8 @@ _unicar_navegar() {
     # --------------------------------------------------------
 
     if (( $# == 0 )); then
-
+        
+        echo "$ruta"
         cd -- "$ruta" || return 1
 
         return 0
@@ -620,6 +621,7 @@ _unicar_navegar() {
     # Entrar al último directorio
     # --------------------------------------------------------
 
+    echo "$ruta"
     cd -- "$ruta" || return 1
 }
 
@@ -784,7 +786,7 @@ unicar() {
     _unicar_navegar \
         "$ruta" \
         "$descripcion" \
-        "$@"
+        "$@" 
 }
 
 # ============================================================
