@@ -82,6 +82,15 @@ unicar -p proyectos cliente
 
 UNICAR busca los directorios por coincidencia de nombre, por lo que no es necesario escribir la ruta completa.
 
+### Retorno de la ruta
+
+Permite la ejecución de comandos sobre la ruta especificada, evitando navegaciones innecesarias.
+
+```bash
+ls $(unicar -p proyectos)
+cliente    emprendimiento    trabajo
+```
+
 ### Listar rutas
 
 ```bash
